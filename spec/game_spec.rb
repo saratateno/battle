@@ -24,13 +24,6 @@ describe Game do
     end
   end
 
-  describe '#attack' do
-    it 'damages the opponent\'s HP' do
-      expect(player_2).to receive(:receive_damage)
-      game.attack(player_2)
-    end
-  end
-
   describe '#current_player' do
     it 'starts as player 1' do
       expect(game.current_player).to eq player_1
