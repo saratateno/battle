@@ -14,12 +14,11 @@ feature 'Attack' do
       expect(page).to have_content 'Johnny Cash attacked Bruce Springsteen'
     end
 
-    scenario 'reduce player 2\'s HP' do
+    scenario 'reduce player 2\'s by a random amount of HP' do
       sign_in_and_play
       click_button 'Attack'
       click_button 'OK'
       expect(page).not_to have_content 'Bruce Springsteen: 60 HP'
-      expect(page).to have_content 'Bruce Springsteen: 50 HP'
     end
   end
 
@@ -30,8 +29,7 @@ feature 'Attack' do
   describe 'attack on player 1' do
     scenario 'make attack' do
       sign_in_and_play
-      click_button 'Attack'
-      click_button 'OK'
+      attack_and_confirm
       click_button 'Attack'
       expect(page).not_to have_content 'Johnny Cash attacked Bruce Springsteen'
       expect(page).to have_content 'Bruce Springsteen attacked Johnny Cash'
@@ -39,12 +37,9 @@ feature 'Attack' do
 
     scenario 'make attack' do
       sign_in_and_play
-      click_button 'Attack'
-      click_button 'OK'
-      click_button 'Attack'
-      click_button 'OK'      
+      2.times { attack_and_confirm }
       expect(page).not_to have_content 'Johnny Cash: 60 HP'
-      expect(page).to have_content 'Johnny Cash: 50 HP'
     end
   end
+
 end

@@ -28,6 +28,11 @@ class Game
     @players[1]
   end
 
+  def game_over?
+    @players.each { |player| return true if player.hit_points <= 0}
+    false
+  end
+
   private
   attr_reader :players
 end
