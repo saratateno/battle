@@ -1,7 +1,7 @@
 <h2><%= @game.player_1_name %> vs. <%= @game.player_2_name %></h2>
 
 <div>
-<em><%= @game.next_player %>: It is your turn!</em>
+<em><%= @game.current_player.name %>: It is your turn!</em>
 </div>
 
 <p><%= @game.player_1_name %>: <%= @game.player_1_hp %> HP</p>
