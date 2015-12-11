@@ -5,6 +5,15 @@
 <%= @game.player_2_name %> attacked  <%= @game.player_1_name %>
 <% end %>
 
+<% if @game.game_over? %>
+<form action='/game_over' method='post'>
+  <input type="submit" value="OK">
+</form>
+
+<% else %>
+
 <form action='/switch_turns' method='post'>
   <input type="submit" value="OK">
 </form>
+
+<% end %>
