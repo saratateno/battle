@@ -1,8 +1,13 @@
-<%= @game.player_1_name %> vs. <%= @game.player_2_name %>
+<h2><%= @game.player_1_name %> vs. <%= @game.player_2_name %></h2>
 
-<%= @game.next_player %>: It is your turn!
+<div>
+<em><%= @game.next_player %>: It is your turn!</em>
+</div>
 
-<%= @game.player_1_name %>: <%= @game.player_1_hp %> HP
-<%= @game.player_2_name %>: <%= @game.player_2_hp %> HP
+<p><%= @game.player_1_name %>: <%= @game.player_1_hp %> HP</p>
+<p><%= @game.player_2_name %>: <%= @game.player_2_hp %> HP</p>
 
-<a href='/attack'>Attack</a>
+
+<form action='/attack'>
+  <input type="submit" value="Attack">
+</form>

@@ -16,6 +16,9 @@ class Game
 
   def attack(player)
     player.receive_damage
+  end
+
+  def switch_turns
     @turn += 1
   end
 

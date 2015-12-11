@@ -1,15 +1,27 @@
 feature 'gameplay' do
-  scenario 'display whose turn it is' do
-    sign_in_and_play
-    expect(page).to have_content 'Johnny Cash: It is your turn!'
-  end
 
-  scenario 'allows players to take turns' do
-    sign_in_and_play
-    click_link 'Attack'
-    click_link 'OK'
-    expect(page).not_to have_content 'Johnny Cash: It is your turn!'
-    expect(page).to have_content 'Bruce Springsteen: It is your turn!'
+  describe 'Switch turns' do
+    context 'seeing the current turn' do
+      scenario 'at start of game' do
+        sign_in_and_play
+        expect(page).to have_content 'Johnny Cash: It is your turn!'
+      end
+
+      scenario 'after first attack' do
+        sign_in_and_play
+        click_button 'Attack'
+        click_button 'OK'
+        expect(page).not_to have_content 'Johnny Cash: It is your turn!'
+        expect(page).to have_content 'Bruce Springsteen: It is your turn!'
+      end
+    end
+
+    scenario 'player 2 can attack player 1' do
+      sign_in_and_play
+      click_button 'Attack'
+      click_button 'OK'
+    end
+
   end
 
   feature 'viewing hitpoints' do
